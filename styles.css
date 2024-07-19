@@ -17,6 +17,17 @@ h1{
 #moto{
     text-align: center;
     font-size: 30px;
+    background-color: #fff;
+    color: white;
+    animation: motto 5s forwards;
+}
+@keyframes motto {
+    0%{
+        background-color: white;
+    }
+    100%{
+        background-color: black;
+    }
 }
 nav>img {
     width: 150px;
