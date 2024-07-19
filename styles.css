@@ -1,116 +1,121 @@
 body {
     margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
 }
 
 .dark-theme {
-    background-color: #2c2c2c;
-    color: #f5f5f5;
+    background-color: black;
+    color: white;
+}
+
+ #app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 20px;
+}
+
+#auth{
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 20px;
+    background: 
+    linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1)), /* semi-transparent overlay */
+    url("https://clickup.com/blog/wp-content/uploads/2022/07/CleanShot-2022-07-21-at-02.16.04@2x-700x430.png"); /* background image */
+background-size: cover; 
+background-repeat: no-repeat;
+background-position: center;
+}
+
+
+.form-container {
+    margin: 10px;
+    padding: 20px;
+    border: 2px solid rgb(145, 127, 127);
+    border-radius: 5px;
+    text-align: center;
+    background-color: rgb(243, 247, 247);
+    height: 250px;
+    width: 250px;
+}
+
+input[type="text"], input[type="password"] {
+    margin: 5px 0;
+    padding: 10px;
+    width: 200px;
+    border: 1px solid  whitesmoke;
+    border-radius: 5px;
+   
+}
+
+button {
+    margin: 5px 0;
+    padding: 10px;
+    width: 50%;
+    border: none;
+    background-color: #b38067;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #daae97;
 }
 
 .toolbar {
     display: flex;
-    flex-wrap: wrap;
-    background-color: #333;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
+    gap: 10px;
+  
 }
 
-.toolbar button {
-    background-color: #444;
+.toolbar button, .toolbar input, .toolbar select {
+    margin: 0 5px;
+    padding: 10px;
     border: none;
-    color: #fff;
-    padding: 10px;
-    margin: 2px;
+    background-color:rgb(145, 202, 185);
+   
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 18px;
 }
 
-.toolbar button:hover {
-    background-color: #555;
+.toolbar button:hover, .toolbar input:hover, .toolbar select:hover {
+    background-color: rgb(218, 205, 205);
 }
 
-.toolbar button.active {
-    background-color: #666;
-}
-
-.toolbar input[type="color"],
-.toolbar input[type="range"] {
-    margin: 2px;
+.toolbar button.active, .toolbar input:active, .toolbar select:active {
+    background-color: #ccc;
 }
 
 #whiteboard {
     display: block;
-    margin: 80px auto;
-    border: 1px solid #000;
-    background-color: #fff;
-}
-
-.sticky-note {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    background-color: yellow;
+    margin: 0 auto;
     border: 1px solid #ccc;
-    resize: both;
-    overflow: auto;
-    z-index: 1001;
 }
 
 #notification {
-    display: none;
     position: fixed;
-    top: 10px;
-    right: 10px;
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 1002;
-}
-
-.form-container {
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-}
-
-#auth {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.form-container h2 {
-    margin: 0 0 10px 0;
-    text-align: center;
-}
-
-.form-container label {
-    margin: 5px 0;
-}
-
-.form-container input {
-    padding: 8px;
-    margin: 5px 0 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.form-container button {
-    padding: 10px;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: #28a745;
     color: #fff;
-    border: none;
+    padding: 10px;
     border-radius: 5px;
-    cursor: pointer;
+    display: none;
 }
 
-.form-container button:hover {
-    background-color: #218838;
+.view-mode .toolbar button:not(.active),
+.view-mode .toolbar input,
+.view-mode .toolbar select {
+    display: none;
 }
