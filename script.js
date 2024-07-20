@@ -13,7 +13,8 @@ let drawingSettings = {
 let isLocked = false;
 let zoomLevel = 1;
 let username = localStorage.getItem('username') || '';
-
+const draggable = document.getElementById('draggable');
+const draggable2 = document.getElementById('draggable2');
 if (username) {
     document.getElementById('auth').style.display = 'none';
     document.getElementById('app').style.display = 'flex';
@@ -139,14 +140,8 @@ function drawShape(event) {
             ctx.ellipse(centerX, centerY, radiusX, radiusY, 0, 0, Math.PI * 2);
             ctx.stroke();
             break;
-        case 'text':
-            const text = prompt('Enter text:');
-            if (text) {
-                ctx.font = `${drawingSettings.lineThickness * 10}px Arial`;
-                ctx.fillStyle = drawingSettings.color;
-                ctx.fillText(text, x, y);
-            }
-            break;
+        
+            
     }
 }
 
@@ -197,14 +192,25 @@ function loadWhiteboard() {
 }
 
 function addStickyNote() {
-    const note = prompt('Enter your note:');
-    if (note) {
-        ctx.font = '20px Arial';
-        ctx.fillStyle = 'yellow';
-        ctx.fillRect(startX, startY, 200, 100);
-        ctx.fillStyle = 'black';
-        ctx.fillText(note, startX + 10, startY + 50);
-    }
+    draggable.style.display="flex"
+    draggable.style.flexDirection="column"
+    draggable.style.justifyContent="center"
+    draggable.style.alignItems="center"
+   let textarea=document.createElement("textarea")
+   textarea.placeholder="Enter Text"
+   textarea.style.backgroundColor="rgb(229, 255, 247)"
+   draggable.append(textarea)
+}
+
+function addtext() {
+    draggable2.style.display="flex"
+    draggable2.style.flexDirection="column"
+    draggable2.style.justifyContent="center"
+    draggable2.style.alignItems="center"
+   let textarea=document.createElement("textarea")
+   textarea.placeholder="Enter Text"
+   textarea.style.border="none"
+   draggable2.append(textarea)
 }
 
 function changeCanvasBackground(color) {
@@ -266,11 +272,15 @@ window.addEventListener('beforeunload', () => {
     saveWhiteboard();
 });
 
-const draggable = document.getElementById('draggable');
 
 draggable.addEventListener('dragstart', (event) => {
     event.dataTransfer.setData('text/plain', '');
     draggable.style.opacity = '0.5';
+});
+
+draggable2.addEventListener('dragstart', (event) => {
+    event.dataTransfer.setData('text/plain', '');
+    draggable2.style.opacity = '0.5';
 });
 
 draggable.addEventListener('dragend', (event) => {
@@ -282,6 +292,20 @@ draggable.addEventListener('dragend', (event) => {
     draggable.style.opacity = '1';
 });
 
+draggable2.addEventListener('dragend', (event) => {
+    const container = document.getElementById('body');
+    const offsetX = event.clientX - container.getBoundingClientRect().left;
+    const offsetY = event.clientY - container.getBoundingClientRect().top;
+    draggable2.style.left = `${offsetX}px`;
+    draggable2.style.top = `${offsetY}px`;
+    draggable2.style.opacity = '1';
+});
+
+
 draggable.addEventListener('dragover', (event) => {
+    event.preventDefault();
+});
+
+draggable2.addEventListener('dragover', (event) => {
     event.preventDefault();
 });

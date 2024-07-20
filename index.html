@@ -32,7 +32,7 @@
             <button id="rectangle" onclick="changeTool('rectangle')" title="Rectangle"><i class="fas fa-square"></i></button>
             <button id="circle" onclick="changeTool('circle')" title="Circle"><i class="fas fa-circle"></i></button>
             <button id="ellipse" onclick="changeTool('ellipse')" title="Ellipse"><i class="fas fa-ellipsis-h"></i></button>
-            <button id="text" onclick="changeTool('text')" title="Text"><i class="fas fa-font"></i></button>
+            <button id="text" onclick="addtext()" title="Text"><i class="fas fa-font"></i></button>
             <button id="sticky-note" onclick="addStickyNote()" title="Add Sticky Note"><i class="fas fa-sticky-note"></i></button>
             <button onclick="clearBoard()" title="Clear Board"><i class="fas fa-trash-alt"></i></button>
             <button onclick="toggleTheme()" title="Toggle Theme"><i class="fas fa-adjust"></i></button>
@@ -52,12 +52,15 @@
             </select>
         </div>
         <canvas id="whiteboard"></canvas>
+      
+            <div id="draggable" draggable="true">Note</div>
+            <div id="draggable2" draggable="true"></div>
+      
     </div>
-    <div id="container">
-        <div id="draggable" draggable="true">Drag me!</div>
-    </div>
+    
     <input type="file" id="fileInput" style="display:none;" accept="image/*" onchange="loadCanvasFromFile(event)">
     <div id="notification"></div>
-    <script src="script.js"></script>
+   
 </body>
+<script src="script.js"></script>
 </html>

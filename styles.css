@@ -138,8 +138,8 @@ body {
 }
 
 #draggable {
-    width: 100px;
-    height: 50px;
+   
+    
     background-color: #4CAF50;
     color: white;
     display: flex;
@@ -149,4 +149,21 @@ body {
     cursor: move;
     position: absolute;
     user-select: none;
+display:none;
+}
+
+#draggable2 {
+   
+    
+    
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: move;
+    position: absolute;
+    user-select: none;
+display:none;
+
 }
