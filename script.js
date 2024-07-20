@@ -142,172 +142,146 @@ function drawShape(event) {
         case 'text':
             const text = prompt('Enter text:');
             if (text) {
-                ctx.font = `${drawingSettings.lineThickness * 5}px Arial`;
+                ctx.font = `${drawingSettings.lineThickness * 10}px Arial`;
                 ctx.fillStyle = drawingSettings.color;
-                ctx.fillText(text, startX, startY);
+                ctx.fillText(text, x, y);
             }
             break;
     }
 }
 
-function addStickyNote() {
-    const stickyNote = document.createElement('div');
-    stickyNote.className = 'sticky-note';
-    stickyNote.contentEditable = true;
-    stickyNote.style.position = 'absolute';
-    stickyNote.style.left = '100px';
-    stickyNote.style.top = '100px';
-    stickyNote.style.width = '200px'; // Set width
-    stickyNote.style.height = '150px'; // Set height
-    stickyNote.style.padding = '10px'; // Add padding
-    stickyNote.style.border = '1px solid #ccc'; // Add border
-    stickyNote.style.backgroundColor = '#ffeb3b'; // Default background color
-    stickyNote.innerText = 'Double-click to edit';
-
-    const colorPicker = document.createElement('input');
-    colorPicker.type = 'color';
-    colorPicker.value = '#ffeb3b';
-    colorPicker.onchange = () => {
-        stickyNote.style.backgroundColor = colorPicker.value;
-    };
-
-    const highlightButton = document.createElement('button');
-    highlightButton.innerText = 'Highlight';
-    highlightButton.onclick = () => {
-        stickyNote.style.backgroundColor = 'yellow'; // Highlight color
-    };
-
-    stickyNote.appendChild(colorPicker);
-    stickyNote.appendChild(highlightButton);
-    document.body.appendChild(stickyNote);
-
-    stickyNote.ondblclick = function () {
-        this.contentEditable = true;
-        this.focus();
-    };
-
-    stickyNote.onblur = function () {
-        this.contentEditable = false;
-    };
-}
-
 function clearBoard() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    saveWhiteboard();
 }
 
-function lockCanvas() {
-    isLocked = !isLocked;
-    document.getElementById('lock').innerText = isLocked ? 'Unlock' : 'Lock';
+function toggleTheme() {
+    document.body.classList.toggle('dark-theme');
 }
 
 function zoomIn() {
     zoomLevel += 0.1;
-    canvas.style.height = `${(window.innerHeight - 100) * zoomLevel}px`;
+    canvas.style.transform = `scale(${zoomLevel})`;
 }
 
 function zoomOut() {
-    if (zoomLevel > 1) {
-        zoomLevel -= 0.1;
-        canvas.style.height = `${(window.innerHeight - 100) * zoomLevel}px`;
-    }
+    zoomLevel = Math.max(1, zoomLevel - 0.1);
+    canvas.style.transform = `scale(${zoomLevel})`;
 }
 
-function changeCanvasBackground(color) {
-    if (color === 'custom') {
-        const customColor = prompt('Enter a color (name or hex):');
-        canvas.style.backgroundColor = customColor;
-    } else {
-        canvas.style.backgroundColor = color;
-    }
+function lockCanvas() {
+    isLocked = !isLocked;
+    document.getElementById('lock').classList.toggle('active');
 }
 
-function exportCanvas() {
-    const link = document.createElement('a');
-    link.download = 'whiteboard.png';
-    link.href = canvas.toDataURL();
-    link.click();
+function viewCanvas() {
+    document.getElementById('view').classList.toggle('active');
+    document.getElementById('app').classList.toggle('view-mode');
 }
 
-function showNotification(message) {
-    const notification = document.getElementById('notification');
-    notification.innerText = message;
-    notification.style.display = 'block';
-    setTimeout(() => {
-        notification.style.display = 'none';
-    }, 3000);
+function saveWhiteboard() {
+    const dataURL = canvas.toDataURL();
+    localStorage.setItem(`whiteboard_${username}`, dataURL);
+    showNotification('Whiteboard saved!');
 }
 
 function loadWhiteboard() {
-    const savedData = localStorage.getItem('whiteboard');
-    if (savedData) {
+    const dataURL = localStorage.getItem(`whiteboard_${username}`);
+    if (dataURL) {
         const img = new Image();
-        img.src = savedData;
+        img.src = dataURL;
         img.onload = () => {
             ctx.drawImage(img, 0, 0);
         };
     }
 }
 
-function saveWhiteboard() {
-    const data = canvas.toDataURL();
-    localStorage.setItem('whiteboard', data);
-    showNotification('Whiteboard saved!');
+function addStickyNote() {
+    const note = prompt('Enter your note:');
+    if (note) {
+        ctx.font = '20px Arial';
+        ctx.fillStyle = 'yellow';
+        ctx.fillRect(startX, startY, 200, 100);
+        ctx.fillStyle = 'black';
+        ctx.fillText(note, startX + 10, startY + 50);
+    }
 }
 
-function resizeCanvas() {
-    canvas.width = window.innerWidth - 20;
-    canvas.height = window.innerHeight - 100;
-    loadWhiteboard(); 
+function changeCanvasBackground(color) {
+    ctx.fillStyle = color === 'custom' ? prompt('Enter custom color:') : color;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas(); // Initial call to set the size
+function exportCanvas() {
+    const dataURL = canvas.toDataURL();
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = 'whiteboard.png';
+    link.click();
+}
 
-// Keyboard shortcuts
+function showNotification(message) {
+    const notification = document.getElementById('notification');
+    notification.textContent = message;
+    notification.style.display = 'block';
+    setTimeout(() => {
+        notification.style.display = 'none';
+    }, 3000);
+}
+
+function openNewPage() {
+    const newWindow = window.open('', '_blank');
+    newWindow.document.write(document.documentElement.outerHTML);
+    newWindow.document.close();
+}
+
 document.addEventListener('keydown', (event) => {
-    switch (event.key) {
-        case 's':
-            saveWhiteboard();
-            break;
-        case 'c':
-            clearBoard();
-            break;
-        case 'l':
-            changeTool('line');
-            break;
-        case 'r':
-            changeTool('rectangle');
-            break;
-        case 'o':
-            changeTool('circle');
-            break;
-        case 'e':
-            changeTool('ellipse');
-            break;
-        case 't':
-            changeTool('text');
-            break;
-        case 'z':
-            zoomIn();
-            break;
-        case 'x':
-            zoomOut();
-            break;
+    if (event.ctrlKey || event.metaKey) {
+        switch (event.key) {
+            case 'z':
+                event.preventDefault();
+                undo();
+                break;
+            case 'y':
+                event.preventDefault();
+                redo();
+                break;
+            case 's':
+                event.preventDefault();
+                saveWhiteboard();
+                break;
+        }
     }
 });
 
-
-function toggleTheme() {
-    const body = document.body;
-    const currentTheme = body.classList.toggle('dark-theme');
-
-    if (currentTheme) {
-        body.style.backgroundColor = '#333';
-        body.style.color = '#fff';
-        showNotification('Switched to Dark Mode');
-    } else {
-        body.style.backgroundColor = '#fff';
-        body.style.color = '#000';
-        showNotification('Switched to Light Mode');
-    }
+function undo() {
+    // Implement undo functionality
 }
+
+function redo() {
+    // Implement redo functionality
+}
+
+window.addEventListener('beforeunload', () => {
+    saveWhiteboard();
+});
+
+const draggable = document.getElementById('draggable');
+
+draggable.addEventListener('dragstart', (event) => {
+    event.dataTransfer.setData('text/plain', '');
+    draggable.style.opacity = '0.5';
+});
+
+draggable.addEventListener('dragend', (event) => {
+    const container = document.getElementById('container');
+    const offsetX = event.clientX - container.getBoundingClientRect().left;
+    const offsetY = event.clientY - container.getBoundingClientRect().top;
+    draggable.style.left = `${offsetX}px`;
+    draggable.style.top = `${offsetY}px`;
+    draggable.style.opacity = '1';
+});
+
+draggable.addEventListener('dragover', (event) => {
+    event.preventDefault();
+});
