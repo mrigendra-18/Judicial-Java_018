@@ -274,7 +274,7 @@ draggable.addEventListener('dragstart', (event) => {
 });
 
 draggable.addEventListener('dragend', (event) => {
-    const container = document.getElementById('container');
+    const container = document.getElementById('body');
     const offsetX = event.clientX - container.getBoundingClientRect().left;
     const offsetY = event.clientY - container.getBoundingClientRect().top;
     draggable.style.left = `${offsetX}px`;
