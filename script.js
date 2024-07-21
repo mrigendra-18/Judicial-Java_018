@@ -2,7 +2,7 @@ const canvas = document.getElementById('whiteboard');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth - 20;
 canvas.height = window.innerHeight - 100;
-
+ctx.fillStyle="#FFFFFF"
 let isDrawing = false;
 let tool = 'pen';
 let startX, startY;
@@ -90,7 +90,7 @@ function stopDrawing(event) {
         drawShape(event);
     }
 }
-
+let value=document.querySelector("#backgroundSelect")
 function draw(event) {
     if (isLocked || !isDrawing) return;
 
@@ -98,7 +98,7 @@ function draw(event) {
     const y = (event.clientY - canvas.offsetTop) / zoomLevel;
 
     ctx.lineWidth = tool === 'eraser' ? 10 : drawingSettings.lineThickness;
-    ctx.strokeStyle = tool === 'eraser' ? '#fff' : drawingSettings.color;
+    ctx.strokeStyle = tool === 'eraser' ? ctx.fillStyle: drawingSettings.color;
     ctx.lineCap = 'round';
 
     if (tool === 'pen' || tool === 'eraser') {
@@ -215,7 +215,9 @@ function addtext() {
 
 function changeCanvasBackground(color) {
     ctx.fillStyle = color === 'custom' ? prompt('Enter custom color:') : color;
+
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+ 
 }
 
 function exportCanvas() {
