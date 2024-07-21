@@ -6,24 +6,18 @@
     <title>Collaborative Whiteboard</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+CZ:wght@100..400&display=swap" rel="stylesheet">
 </head>
 <body id="body">
     
-    <div id="auth">
-        <div class="form-container">
-            <h2>Register</h2>
-            <input type="text" id="registerUsername" placeholder="Username" required>
-            <input type="password" id="registerPassword" placeholder="Password" required>
-            <button onclick="register()">Register</button>
-        </div>
-        <div class="form-container">
-            <h2>Login</h2>
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button onclick="login()">Login</button>
-        </div>
-    </div>
-
+    <nav>
+        <img src="logo.jpeg" alt="" />
+        <h1>InspireBoard</h1>
+        <a id="register" href="./register.html">Sign In/Up</a>
+      </nav>
+      <p id="moto">Let your imagination run WiLd</p>
     <div id="app" style="display: none;">
         <div class="toolbar">
             <button id="pen" onclick="changeTool('pen')" title="Pen"><i class="fas fa-pencil-alt"></i></button>

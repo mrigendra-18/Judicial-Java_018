@@ -16,7 +16,7 @@ let username = localStorage.getItem('username') || '';
 const draggable = document.getElementById('draggable');
 const draggable2 = document.getElementById('draggable2');
 if (username) {
-    document.getElementById('auth').style.display = 'none';
+   
     document.getElementById('app').style.display = 'flex';
     loadWhiteboard();
 } else {
@@ -91,6 +91,7 @@ function stopDrawing(event) {
     }
 }
 let value=document.querySelector("#backgroundSelect")
+
 function draw(event) {
     if (isLocked || !isDrawing) return;
 

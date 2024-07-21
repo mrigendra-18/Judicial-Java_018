@@ -9,7 +9,7 @@ body {
     color: white;
 }
 
-#auth, #app {
+#app {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,20 +18,7 @@ body {
     gap: 20px;
 }
 
-#auth{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    gap: 20px;
-    background: 
-    linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1)), /* semi-transparent overlay */
-    url("https://clickup.com/blog/wp-content/uploads/2022/07/CleanShot-2022-07-21-at-02.16.04@2x-700x430.png"); /* background image */
-background-size: cover; 
-background-repeat: no-repeat;
-background-position: center;
-}
+
 
 
 .form-container {
@@ -106,6 +93,7 @@ button:hover {
     position: relative;
     background-color: #fff;
     overflow: hidden;
+    max-width: 1400px;
 }
 
 #notification {
@@ -133,9 +121,7 @@ body {
     background-color: #f0f0f0;
 }
 
-#container {
-  
-}
+
 
 #draggable {
    
@@ -166,4 +152,65 @@ display:none;
     user-select: none;
 display:none;
 
+}
+
+nav{
+   
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1400px;
+}
+h1{
+    font-family: "Playwrite CZ", cursive;
+    font-size: 50px;
+    animation: intro 3s ;
+}
+#register{
+    width: 100px;
+    background-color: black;
+    color: white;
+    height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    align-content: center;
+    font-size: 15px;
+    text-decoration: none;
+}
+.dark-theme #register{
+    background-color: white;
+    color: black;
+    }
+#moto{
+    text-align: center;
+    font-size: 30px;
+    background-color:white;
+    color:white;
+    animation: motto 5s forwards;
+    animation-delay: 3s;
+    max-width: 1400px;
+    margin: auto;
+}
+@keyframes motto {
+    0%{
+        background-color: white;
+    }
+    100%{
+        background-color: black;
+    }
+}
+@keyframes intro {
+    0%{
+        /* transform: scale(8); */
+        transform: translateY(500px) scale(7);
+        background-color: #fff;
+    /* }30%{
+       transform: translateY(250px) scale(4); */
+    }100%{
+        transform: scale(1);
+}}
+nav>img {
+    width: 120px;
 }
