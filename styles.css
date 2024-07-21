@@ -8,18 +8,37 @@ nav{
     width: 1440px;
     margin: auto;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 h1{
     font-family: "Playwrite CZ", cursive;
     margin: auto;
-    font-size: 80px;
+    font-size: 50px;
+    animation: intro 3s ;
 }
+#register{
+    width: 100px;
+    background-color: black;
+    color: white;
+    height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    align-content: center;
+    font-size: 15px;
+    text-decoration: none;
+}
+.dark-theme #register{
+    background-color: white;
+    color: black;
+    }
 #moto{
     text-align: center;
     font-size: 30px;
-    background-color: #fff;
-    color: white;
+    background-color:white;
+    color:white;
     animation: motto 5s forwards;
+    animation-delay: 3s;
 }
 @keyframes motto {
     0%{
@@ -29,15 +48,28 @@ h1{
         background-color: black;
     }
 }
+@keyframes intro {
+    0%{
+        /* transform: scale(8); */
+        transform: translateY(500px) scale(7);
+        background-color: #fff;
+    /* }30%{
+       transform: translateY(250px) scale(4); */
+    }100%{
+        transform: scale(1);
+}}
 nav>img {
-    width: 150px;
+    width: 120px;
 }
 
 .dark-theme {
     background-color: black;
     color: white;
 }
-
+.dark-theme #moto{
+background-color: white;
+color: black;
+}
  #app {
     display: flex;
     flex-direction: column;
