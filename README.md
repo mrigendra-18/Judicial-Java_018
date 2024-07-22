@@ -10,7 +10,7 @@ A real-time collaborative whiteboard application that allows users to draw, writ
 
 ### Video Presentation
 
-![Presentation Collaborative Whiteboard](https://drive.google.com/file/d/10A5txfiuuUUVJ0rza579LyZHlrshdakX/view?usp=sharing)
+![Presentation Collaborative Whiteboard]("https://drive.google.com/file/d/10A5txfiuuUUVJ0rza579LyZHlrshdakX/view?usp=sharing")
 
 ## Features
 
