@@ -275,11 +275,11 @@ document.addEventListener('keydown', (event) => {
 });
 
 function undo() {
-    // Implement undo functionality
+    
 }
 
 function redo() {
-    // Implement redo functionality
+   
 }
 
 window.addEventListener('beforeunload', () => {

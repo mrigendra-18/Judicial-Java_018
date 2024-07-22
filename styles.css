@@ -26,8 +26,8 @@ body {
     height: 100vh;
     gap: 20px;
     background: 
-    linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1)), /* semi-transparent overlay */
-    url("https://clickup.com/blog/wp-content/uploads/2022/07/CleanShot-2022-07-21-at-02.16.04@2x-700x430.png"); /* background image */
+    linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1)), 
+    url("https://clickup.com/blog/wp-content/uploads/2022/07/CleanShot-2022-07-21-at-02.16.04@2x-700x430.png"); 
 background-size: cover; 
 background-repeat: no-repeat;
 background-position: center;
@@ -133,9 +133,7 @@ body {
     background-color: #f0f0f0;
 }
 
-#container {
-  
-}
+
 
 #draggable {
    
@@ -168,24 +166,6 @@ display:none;
 
 }
 
-#loginpage
-{
 
-}
 
-@media (max-width:850px)
-{
-    .toolbar
-    {
-    display: grid;
-   grid-template-columns: repeat(2,1fr);
 
-    
-    }
-    #whiteboard
-    {
-       
-       
-    }
-
-}
