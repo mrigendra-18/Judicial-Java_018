@@ -1,3 +1,5 @@
+let loginpage=document.querySelector("#loginpage")
+let registerpage=document.querySelector("#registerpage")
 const canvas = document.getElementById('whiteboard');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth - 20;
@@ -26,12 +28,21 @@ if (username) {
 function register() {
     const registerUsername = document.getElementById('registerUsername').value;
     const registerPassword = document.getElementById('registerPassword').value;
+    
     if (registerUsername && registerPassword) {
         localStorage.setItem(`user_${registerUsername}`, registerPassword);
         showNotification('Registration successful. Please log in.');
+    registerpage.innerHTML=""
+    loginpage.innerHTML=`  <div  class="form-container">
+                <h2>Login</h2>
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button onclick="login()">Login</button>
+            </div>`
     } else {
         showNotification('Please enter a username and password.');
     }
+   
 }
 
 function login() {
@@ -44,6 +55,7 @@ function login() {
         document.getElementById('auth').style.display = 'none';
         document.getElementById('app').style.display = 'flex';
         loadWhiteboard();
+
     } else {
         showNotification('Invalid username or password.');
     }

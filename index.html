@@ -10,18 +10,24 @@
 <body id="body">
     
     <div id="auth">
-        <div class="form-container">
-            <h2>Register</h2>
-            <input type="text" id="registerUsername" placeholder="Username" required>
-            <input type="password" id="registerPassword" placeholder="Password" required>
-            <button onclick="register()">Register</button>
+        <div id="registerpage">
+            <div  class="form-container">
+                <h2>Register</h2>
+                <input type="text" id="registerUsername" placeholder="Username" required>
+                <input type="password" id="registerPassword" placeholder="Password" required>
+                <button onclick="register()">Register</button>
+            </div>
         </div>
-        <div class="form-container">
-            <h2>Login</h2>
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button onclick="login()">Login</button>
+       
+        <div id="loginpage">
+            <!-- <div  class="form-container">
+                <h2>Login</h2>
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button onclick="login()">Login</button>
+            </div> -->
         </div>
+        
     </div>
 
     <div id="app" style="display: none;">
