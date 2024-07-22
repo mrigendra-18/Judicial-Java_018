@@ -1,11 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Whiteboard Application </title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collaborative Whiteboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body id="body">
+    <div id="auth">
+      <div id="registerpage">
+        <div class="form-container">
+          <h2>Register</h2>
+          <input
+            type="text"
+            id="registerUsername"
+            placeholder="Username"
+            required
+          />
+          <input
+            type="password"
+            id="registerPassword"
+            placeholder="Password"
+            required
+          />
+          <button onclick="register()">Register</button>
+        </div>
+      </div>
+
+      <div id="loginpage"></div>
+    </div>
+
+    <div id="app" style="display: none">
+      <div class="toolbar">
+        <button id="pen" onclick="changeTool('pen')" title="Pen">
+          <i class="fas fa-pencil-alt"></i>
+        </button>
+        <button id="eraser" onclick="changeTool('eraser')" title="Eraser">
+          <i class="fas fa-eraser"></i>
+        </button>
+        <button id="line" onclick="changeTool('line')" title="Line">
+          <i class="fas fa-arrows-alt-h"></i>
+        </button>
+        <button
+          id="rectangle"
+          onclick="changeTool('rectangle')"
+          title="Rectangle"
+        >
+          <i class="fas fa-square"></i>
+        </button>
+        <button id="circle" onclick="changeTool('circle')" title="Circle">
+          <i class="fas fa-circle"></i>
+        </button>
+        <button id="ellipse" onclick="changeTool('ellipse')" title="Ellipse">
+          <i class="fas fa-ellipsis-h"></i>
+        </button>
+        <button id="text" onclick="addtext()" title="Text">
+          <i class="fas fa-font"></i>
+        </button>
+        <button
+          id="sticky-note"
+          onclick="addStickyNote()"
+          title="Add Sticky Note"
+        >
+          <i class="fas fa-sticky-note"></i>
+        </button>
+        <button onclick="clearBoard()" title="Clear Board">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+        <button onclick="toggleTheme()" title="Toggle Theme">
+          <i class="fas fa-adjust"></i>
+        </button>
+        <input
+          type="color"
+          id="colorPicker"
+          value="#000000"
+          onchange="changeColor(this.value)"
+          title="Color Picker"
+        />
+        <input
+          type="range"
+          id="thickness"
+          min="1"
+          max="10"
+          value="2"
+          onchange="changeThickness(this.value)"
+          title="Line Thickness"
+        />
+        <button onclick="zoomIn()" title="Zoom In">
+          <i class="fas fa-search-plus"></i>
+        </button>
+        <button onclick="zoomOut()" title="Zoom Out">
+          <i class="fas fa-search-minus"></i>
+        </button>
+        <button id="lock" onclick="lockCanvas()" title="Lock/Unlock">
+          <i class="fas fa-lock"></i>
+        </button>
+        <button id="view" onclick="viewCanvas()" title="View Mode">
+          <i class="fas fa-eye"></i>
+        </button>
+        <button onclick="exportCanvas()" title="Export Canvas">
+          <i class="fas fa-download"></i>
+        </button>
+        <button onclick="logout()" title="Logout">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+        <button onclick="openNewPage()" title="New Page">
+          <i class="fas fa-file-alt"></i>
+        </button>
+        <select
+          id="backgroundSelect"
+          onchange="changeCanvasBackground(this.value)"
+          title="Change Background Color"
+        >
+          <option value="white">White</option>
+          <option value="black">Black</option>
+          <option value="custom">Custom Color</option>
+        </select>
+      </div>
+      <canvas id="whiteboard"></canvas>
+
+      <div id="draggable" draggable="true">Note</div>
+      <div id="draggable2" draggable="true"></div>
+    </div>
+
+    <input
+      type="file"
+      id="fileInput"
+      style="display: none"
+      accept="image/*"
+      onchange="loadCanvasFromFile(event)"
+    />
+    <div id="notification"></div>
+  </body>
+  <script src="script.js"></script>
 </html>

@@ -1,0 +1,171 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.dark-theme {
+    background-color: black;
+    color: white;
+}
+
+#auth, #app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 20px;
+}
+
+#auth{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 20px;
+    background: 
+    linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1)), 
+    url("https://clickup.com/blog/wp-content/uploads/2022/07/CleanShot-2022-07-21-at-02.16.04@2x-700x430.png"); 
+background-size: cover; 
+background-repeat: no-repeat;
+background-position: center;
+}
+
+
+.form-container {
+    margin: 10px;
+    padding: 20px;
+    border: 2px solid rgb(145, 127, 127);
+    border-radius: 5px;
+    text-align: center;
+    background-color: rgb(243, 247, 247);
+    height: 250px;
+    width: 250px;
+}
+
+input[type="text"], input[type="password"] {
+    margin: 5px 0;
+    padding: 10px;
+    width: 200px;
+    border: 1px solid  whitesmoke;
+    border-radius: 5px;
+   
+}
+
+button {
+    margin: 5px 0;
+    padding: 10px;
+    width: 50%;
+    border: none;
+    background-color: #b38067;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #daae97;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+  
+}
+
+.toolbar button, .toolbar input, .toolbar select {
+    margin: 0 5px;
+    padding: 10px;
+    border: none;
+    background-color:rgb(145, 202, 185);
+   
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.toolbar button:hover, .toolbar input:hover, .toolbar select:hover {
+    background-color: rgb(218, 205, 205);
+}
+
+.toolbar button.active, .toolbar input:active, .toolbar select:active {
+    background-color: #ccc;
+}
+
+#whiteboard {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+#notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+.view-mode .toolbar button:not(.active),
+.view-mode .toolbar input,
+.view-mode .toolbar select {
+    display: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+
+
+#draggable {
+   
+    
+    background-color: #4CAF50;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: move;
+    position: absolute;
+    user-select: none;
+display:none;
+}
+
+#draggable2 {
+   
+    
+    
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: move;
+    position: absolute;
+    user-select: none;
+display:none;
+
+}
+
+
+
+
