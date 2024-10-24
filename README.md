@@ -2,7 +2,7 @@
 
 ## Description
 
-A real-time collaborative whiteboard application that allows users to draw, write, and manage their whiteboards. It features user authentication, various drawing tools, and the ability to save and load whiteboards.
+This project is a simple web-based whiteboard application that allows users to draw, write notes, and manage their work visually.
 
 ### Deployed Links
 
