@@ -6,7 +6,7 @@ This project is a simple web-based whiteboard application that allows users to d
 
 ### Deployed Links
 
-- [Live Demo: Collaborative Whiteboard] (https://669e1ed439ba5f036f246156--golden-eclair-9d611b.netlify.app/)
+- [Live Demo: Collaborative Whiteboard (https://669e1ed439ba5f036f246156--golden-eclair-9d611b.netlify.app/)]
 
 ### Video Presentation
 
