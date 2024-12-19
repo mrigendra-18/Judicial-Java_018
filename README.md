@@ -10,7 +10,7 @@ This project is a simple web-based whiteboard application that allows users to d
 
 ### Video Presentation
 
-(https://drive.google.com/file/d/10A5txfiuuUUVJ0rza579LyZHlrshdakX/view?usp=sharing)
+[Video Presentation](https://drive.google.com/file/d/10A5txfiuuUUVJ0rza579LyZHlrshdakX/view?usp=sharing)
 
 ## Features
 
